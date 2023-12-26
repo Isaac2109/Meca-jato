@@ -9,11 +9,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-md card-dashboard">
+            <div onclick="exibir_form('1')" class="col-md card-dashboard">
                 <p class="text-card">Adicionar clientes</p>
             </div>
 
-            <div class="col-md card-dashboard">
+            <div onclick="exibir_form('2')" class="col-md card-dashboard">
                 <p class="text-card">Atualizar clientes</p>
             </div>
         </div>
@@ -43,7 +43,21 @@
                 
                     <div id="form-carro">
                         {% for carro, placa, ano in carros %}
-                            
+                            <br>
+                            <div class="row">
+                                <div class="col-md">
+                                    <input type='text' placeholder='Carro' class='form-control' name='carro' value="{{carro}}">
+                                </div>
+
+                                <div class="col-md">
+                                    <input type='text' placeholder='Placa' class='form-control' name='placa' value="{{placa}}">
+                                </div>
+                                
+                                <div class="col-md">
+                                    <input type='number' placeholder='Ano' class='form-control' name='ano' value="{{ano}}">
+                                </div>
+
+                            </div>
                         {% endfor %}
 
                     </div>
@@ -55,6 +69,14 @@
             
             </form>
         </div>
+
+        <div id="att_cliente">
+            teste
+
+
+
+        </div>
+
     </div>
     <script src="{% static 'clientes/js/clientes.js' %}"></script>
 {% endblock %}
