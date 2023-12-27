@@ -24,13 +24,13 @@ function exibir_form(tipo){
 
 function dados_cliente(){
     cliente = document.getElementById("cliente-select")
-    csrf_token = document.querySelector('[name=csrfmiddlewaretoken]')
+    csrf_token = document.querySelector('[name=csrfmiddlewaretoken]').value
     id_cliente = cliente.value
 
     data = new FormData()
     data.append('id_cliente', id_cliente)
 
-    fetch("/cliente/atualiza_cliente/", {
+    fetch("/clientes/atualiza_cliente/", {
         method: "POST",
         headers: {
             'X-CSRFToken': csrf_token,
@@ -40,6 +40,6 @@ function dados_cliente(){
     }).then(function(result){
         return result.json()
     }).then(function(data){
-        console.log('teste')
+        console.log(data)
     })
 }
