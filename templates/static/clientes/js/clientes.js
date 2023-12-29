@@ -39,22 +39,28 @@ function dados_cliente(){
 
     }).then(function(result){
         return result.json()
+
     }).then(function(data){
-
-        document.getElementById('form-att-cliente').style.display = 'block'
-
-        nome = document.getElementById('nome')
-        nome.value = data['nome']
         
-        sobrenome = document.getElementById('sobrenome')
-        sobrenome.value = data['sobrenome']
+        aux = document.getElementById('form-att-cliente')
+        aux.style.display = 'block'
+        document.getElementById('nome').value = data['cliente']['nome']
+        document.getElementById('sobrenome').value = data['cliente']['sobrenome']
+        document.getElementById('email').value = data['cliente']['email']
+        document.getElementById('cpf').value = data['cliente']['cpf']
+        
+        div_carros = document.getElementById('carros')
 
-        cpf = document.getElementById('cpf')
-        cpf.value = data['cpf']
+        for(i=0; i<data['carros'].lenght; i++){
+            
+            div_carros.innerHTML += "<form action='' method=''>\
+                <div class='row'>\
+                    <div class='col-md'>\
+                        <input type='text' name='carro' value=`' + data['carros'][i]['fields']['carro'] + '`>\
+                    </div>\
+                </div>\
 
-        email = document.getElementById('email')
-        email.value = data['email']
-
+        }
 
     })
 }
